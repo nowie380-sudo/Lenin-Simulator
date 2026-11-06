@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171b20">
+  <title>Lenin Simulator — 1921</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="game-shell">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">★</span><div><strong>LENIN SIMULATOR</strong><small>RUSSIAN SFSR · 1921</small></div></div>
+      <div class="top-actions"><span id="date-label">January 1921</span><button id="save-btn" class="subtle">Save</button><button id="reset-btn" class="subtle danger-text">New game</button></div>
+    </header>
+
+    <section class="resource-strip" aria-label="National statistics">
+      <div class="resource"><span class="res-icon">🌾</span><div><small>FOOD</small><strong id="food-value">62</strong><em id="food-delta">+0 / turn</em></div></div>
+      <div class="resource"><span class="res-icon">⚙️</span><div><small>INDUSTRY</small><strong id="industry-value">34</strong><em id="industry-delta">+0 / turn</em></div></div>
+      <div class="resource"><span class="res-icon">₽</span><div><small>TREASURY</small><strong id="money-value">48</strong><em id="money-delta">+0 / turn</em></div></div>
+      <div class="resource"><span class="res-icon">👥</span><div><small>PUBLIC TRUST</small><strong id="trust-value">51%</strong><em id="trust-delta">+0 / turn</em></div></div>
+      <div class="resource"><span class="res-icon">🏛️</span><div><small>STABILITY</small><strong id="stability-value">58%</strong><em id="stability-delta">+0 / turn</em></div></div>
+    </section>
+
+    <main class="layout">
+      <section class="map-panel panel">
+        <div class="panel-heading"><div><span class="eyebrow">YOUR REPUBLIC</span><h1>Rebuild the country</h1></div><span class="turn-pill" id="turn-label">TURN 1</span></div>
+        <div class="map-wrap"><canvas id="world" aria-label="Isometric map of a Russian town"></canvas><div class="map-legend"><span><i class="dot wheat"></i> Farms</span><span><i class="dot factory"></i> Industry</span><span><i class="dot civic"></i> Civic</span></div></div>
+        <div class="map-footer"><span id="map-caption">A cold winter. A fragile economy. Difficult choices ahead.</span><button id="next-turn-btn" class="primary">End month <span>→</span></button></div>
+      </section>
+
+      <aside class="side-column">
+        <section class="panel priorities">
+          <div class="panel-heading compact"><div><span class="eyebrow">MONTHLY BRIEFING</span><h2 id="month-title">January 1921</h2></div></div>
+          <p id="briefing">The country is exhausted after years of upheaval. Restore food supplies, restart production and maintain public confidence.</p>
+          <div class="goal"><div class="goal-head"><strong>National recovery</strong><span id="goal-percent">0%</span></div><div class="progress"><span id="goal-bar"></span></div><small>Reach 70 public trust and 65 industry to complete the recovery goals.</small></div>
+        </section>
+
+        <section class="panel actions">
+          <div class="panel-heading compact"><div><span class="eyebrow">GOVERNMENT</span><h2>Issue an order</h2></div></div>
+          <div id="action-list" class="action-list"></div>
+        </section>
+
+        <section class="panel event-panel">
+          <div class="panel-heading compact"><div><span class="eyebrow">FROM THE COUNTRY</span><h2>Latest report</h2></div></div>
+          <div id="event-content" class="event-content"><span class="event-tag">REPORT</span><p>Welcome, Chairman. Your first task is to stabilize everyday life.</p></div>
+        </section>
+      </aside>
+    </main>
+    <footer><span>LENIN SIMULATOR</span><span>AN EDUCATIONAL ALTERNATE-HISTORY MANAGEMENT GAME · LOCAL SAVE</span></footer>
+  </div>
+
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-card"><div class="modal-top"><span class="eyebrow">DECISION REQUIRED</span><button id="close-modal" aria-label="Close">×</button></div><h2 id="modal-title"></h2><p id="modal-description"></p><div id="modal-choices" class="choice-list"></div></div>
+  </div>
+  <div id="toast" class="toast" aria-live="polite"></div>
+  <script type="module" src="main.js"></script>
+</body>
+</html>
